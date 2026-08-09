@@ -37,3 +37,6 @@ jobs:
       - run: npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          # @n8n/node-cli's prepublishOnly guard blocks bare `npm publish`
+          # unless RELEASE_MODE is set; CI is exactly the sanctioned path.
+          RELEASE_MODE: package
