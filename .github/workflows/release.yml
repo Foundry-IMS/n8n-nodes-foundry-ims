@@ -27,7 +27,8 @@ jobs:
           node-version: 22
           registry-url: 'https://registry.npmjs.org'
 
-      - run: npm ci
+      # npm install, not npm ci — see the note in ci.yml
+      - run: npm install --no-audit --no-fund
 
       - run: npm run lint
 

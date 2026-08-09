@@ -15,7 +15,10 @@ jobs:
         with:
           node-version: 22
 
-      - run: npm ci
+      # npm install, not npm ci: @n8n/node-cli's dep tree trips an npm dedupe
+      # bug (ignore@5 vs @7 under @langchain/community) that writes a lockfile
+      # npm ci refuses. The n8n linter forbids an overrides workaround.
+      - run: npm install --no-audit --no-fund
 
       - run: npm run lint
 
