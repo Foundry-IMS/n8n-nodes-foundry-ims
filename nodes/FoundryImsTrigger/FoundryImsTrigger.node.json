@@ -1,0 +1,18 @@
+{
+	"node": "n8n-nodes-base.foundryImsTrigger",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Sales"],
+	"resources": {
+		"credentialDocumentation": [
+			{
+				"url": "https://foundryims.com/docs/authentication/"
+			}
+		],
+		"primaryDocumentation": [
+			{
+				"url": "https://foundryims.com/docs/webhooks/"
+			}
+		]
+	}
+}

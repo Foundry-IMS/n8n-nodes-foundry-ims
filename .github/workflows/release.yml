@@ -1,0 +1,38 @@
+# Publishes to npm with provenance when a v* tag is pushed.
+# n8n's verification requires community packages to be published from a public
+# CI workflow with npm provenance (mandatory since May 2026) — publishing from
+# a laptop will be rejected.
+#
+# Requires an npm granular automation token for @foundry-ims stored as the
+# NPM_TOKEN repository secret.
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: read
+  id-token: write # npm provenance
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: 'https://registry.npmjs.org'
+
+      - run: npm ci
+
+      - run: npm run lint
+
+      - run: npm run build
+
+      - run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
