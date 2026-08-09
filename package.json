@@ -14,7 +14,7 @@
   "author": { "name": "Epic Design Labs", "email": "support@foundryims.com" },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Epic-Design-Labs/n8n-nodes-foundry-ims.git"
+    "url": "https://github.com/Foundry-IMS/n8n-nodes-foundry-ims.git"
   },
   "scripts": {
     "build": "n8n-node build",
